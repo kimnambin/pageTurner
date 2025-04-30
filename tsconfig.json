@@ -1,0 +1,8 @@
+{
+  "files": [],
+  "references": [{"path": "./tsconfig.node.json"}],
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "types": ["vitest/globals", "jest", "@testing-library/jest-dom"]
+  }
+}
