@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import {useState} from 'react';
 import {useParams} from 'react-router-dom';
 import styled from 'styled-components';
 import {useBook} from '../hooks/useBookDetail';
@@ -59,6 +59,8 @@ function BookDetail() {
   const [isOpen, setIsOpen] = useState(false);
 
   if (!book) return null;
+
+  //TODOS : 반응형 디자인 구현하기
 
   return (
     <BookDetailStyle>

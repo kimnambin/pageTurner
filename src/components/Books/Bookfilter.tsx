@@ -1,9 +1,8 @@
-import styled from 'styled-components';
+import styled, {css} from 'styled-components';
 import useCategory from '../../hooks/useCategory';
 import Button from '../common/Button';
 import {useSearchParams} from 'react-router-dom';
 import {QUERYSTRING} from '../../constants/querySting';
-import React from 'react';
 
 const Bookfilter = () => {
   const {category} = useCategory();
@@ -63,6 +62,15 @@ const BookfilterStyle = styled.div`
     display: flex;
     gap: 8px;
   }
+
+  ${({theme}) => css`
+    @media ${theme.mediaQuery.mobile} {
+      .category {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  `}
 `;
 
 export default Bookfilter;

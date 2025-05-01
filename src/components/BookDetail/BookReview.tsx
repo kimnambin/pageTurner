@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from 'styled-components';
 import {
   BookReviewItemWrite,
@@ -17,7 +16,7 @@ const BookReview = ({reviews, onAdd}: Props) => {
     <BookReviewStyle>
       <BookReviewAdd onAdd={onAdd} />
       {reviews.map(item => (
-        <BookReviewItem review={item} />
+        <BookReviewItem review={item} key={item.id} />
       ))}
     </BookReviewStyle>
   );

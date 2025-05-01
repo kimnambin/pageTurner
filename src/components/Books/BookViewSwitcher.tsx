@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, {css} from 'styled-components';
 import Button from '../common/Button';
 import {FaList, FaTh} from 'react-icons/fa';
 import {useSearchParams} from 'react-router-dom';
@@ -60,6 +60,15 @@ const BookViewSwitcherStyle = styled.div`
   svg {
     fill: white;
   }
+
+  ${({theme}) => {
+    return css`
+      @media ${theme.mediaQuery.mobile} {
+        display: flex;
+        margin-bottom: -50px;
+      }
+    `;
+  }}
 `;
 
 export default BookViewSwitcher;

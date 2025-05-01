@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from 'styled-components';
 import {BookReviewItemWrite} from '../../models/book.model';
 import {useForm} from 'react-hook-form';

@@ -9,7 +9,7 @@ import {
 import {Link} from 'react-router-dom';
 import useCategory from '../../hooks/useCategory';
 import {useAuthStore} from '../../store/authStore';
-import React, {useState} from 'react';
+import {useState} from 'react';
 import Dropdown from './Drowdown';
 import logo from '../../assets/images/logo.png';
 
@@ -156,7 +156,7 @@ const HeaderStyle = styled.header<HeaderStyleProps>`
     }
   }
 
-  @media screen AND ${({theme}) => theme.mediaQuery.mobile} {
+  @media screen AND (max-width: 768px) {
     height: 95px;
     .logo {
       padding: 0 0 0 8px;
@@ -178,7 +178,7 @@ const HeaderStyle = styled.header<HeaderStyleProps>`
         display: flex;
         position: absolute;
         top: 34px;
-        right: ${({$isOpen}) => ($isOpen ? '62%' : '52px')};
+        right: ${({$isOpen}) => ($isOpen ? '30%' : '52px')};
         background: #fff;
         border: 0;
         font-size: 1.5rem;
@@ -188,7 +188,7 @@ const HeaderStyle = styled.header<HeaderStyleProps>`
         position: fixed;
         top: 0;
         right: ${({$isOpen}) => ($isOpen ? '0' : '-100%')};
-        width: 60%;
+        width: 30%;
         height: 100vh;
         background: #fff;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);

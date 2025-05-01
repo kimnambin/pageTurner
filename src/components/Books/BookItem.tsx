@@ -5,7 +5,6 @@ import {formatNumber} from '../../utils/Format';
 import {FaHeart} from 'react-icons/fa';
 import {ViewMode} from './BookViewSwitcher';
 import {Link} from 'react-router-dom';
-import React from 'react';
 
 interface Props {
   book: Book;

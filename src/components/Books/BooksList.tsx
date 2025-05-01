@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, {css} from 'styled-components';
 import BookItem from './BookItem';
 import {Book} from '../../models/book.model';
 import {useLocation} from 'react-router-dom';
@@ -41,6 +41,14 @@ const BooksListStyle = styled.div<BooksListProps>`
     view === 'grid' ? 'repeat(4, 1fr)' : 'repeat(1, 1fr)'};
 
   gap: 24px;
+
+  ${({theme, view}) => {
+    return css`
+      @media ${theme.mediaQuery.mobile} {
+        grid-template-columns: repeat(${view === 'grid' ? 2 : 1}, 1fr);
+      }
+    `;
+  }}
 `;
 
 export default BooksList;

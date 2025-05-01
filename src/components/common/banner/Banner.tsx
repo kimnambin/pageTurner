@@ -1,5 +1,5 @@
 import {useMemo, useState} from 'react';
-import styled from 'styled-components';
+import styled, {css} from 'styled-components';
 import {Banner as IBanner} from '../../../models/banner.model';
 import BannerItem from './BannerItem';
 import {FaAngleLeft, FaAngleRight} from 'react-icons/fa';
@@ -100,18 +100,20 @@ const BannerButtonStyle = styled.div`
       right: 10px;
     }
 
-    @media screen AND ${({theme}) => theme.mediaQuery.mobile} {
-      width: 28px;
-      height: 28px;
-      font-size: 1.5rem;
+    ${({theme}) => css`
+      @media ${theme.mediaQuery.mobile} {
+        width: 28px;
+        height: 28px;
+        font-size: 1.5rem;
 
-      &.prev {
-        left: 0;
+        &.prev {
+          left: 0;
+        }
+        &.next {
+          right: 0;
+        }
       }
-      &.next {
-        right: 0;
-      }
-    }
+    `}
   }
 `;
 
@@ -135,7 +137,9 @@ const BannerIndicatorStyle = styled.div`
     }
   }
 
-  @media screen AND ${({theme}) => theme.mediaQuery.mobile} {
+  ${({theme}) => css`
+  @media ${theme.mediaQuery.mobile} {
+
     bottom: 0;
     span {
       width: 11px;
@@ -145,7 +149,7 @@ const BannerIndicatorStyle = styled.div`
         width: 24px;
       }
     }
-  }
+  `}
 `;
 
 export default Banner;
