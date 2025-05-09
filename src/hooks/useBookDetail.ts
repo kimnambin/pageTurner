@@ -83,9 +83,10 @@ export const useBook = (bookId: number | undefined) => {
   }, [bookId]);
 
   const addReview = (data: BookReviewItemWrite) => {
+    console.log('이데이터는 뭐징', data);
     if (!book) return;
 
-    addBookReview(book.id.toString(), data).then(res => {
+    addBookReview(book.id.toString()).then(res => {
       // fetchBookReview(book.id.toString()).then(review => {
       //   setReviews(review);
       // });

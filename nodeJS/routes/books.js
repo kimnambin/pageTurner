@@ -1,6 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const {all_books, book_detail} = require('../controller/book-controller');
+const {
+  all_books,
+  book_detail,
+  apiBooks,
+} = require('../controller/book-controller');
 
 router.use(express.json());
 

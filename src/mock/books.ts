@@ -1,5 +1,5 @@
 import {HttpResponse, http} from 'msw';
-import {Book, BookReviewItem} from '../models/book.model';
+import {Book} from '../models/book.model';
 import {fakerKO as faker} from '@faker-js/faker';
 
 const bestBooksData: Book[] = Array.from({length: 10}).map((_, index) => ({

@@ -15,6 +15,7 @@ const categoryRouter = require('./routes/category');
 const cartRouter = require('./routes/cart');
 const likeRouter = require('./routes/likes');
 const orderRouter = require('./routes/orders');
+const randomRouter = require('./routes/random');
 
 app.use(
   cors({
@@ -30,3 +31,4 @@ app.use('/category', categoryRouter);
 app.use('/carts', cartRouter);
 app.use('/likes', likeRouter);
 app.use('/orders', orderRouter);
+app.use('/', randomRouter);

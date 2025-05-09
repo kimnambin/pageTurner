@@ -32,7 +32,7 @@ const Banner = ({banners}: Props) => {
     <BannerStyle>
       <BannerContainerStyle $transFormValue={transFormValue}>
         {banners.map(item => (
-          <BannerItem banner={item} key={item.id} />
+          <BannerItem banner={item} key={item.title} />
         ))}
       </BannerContainerStyle>
 

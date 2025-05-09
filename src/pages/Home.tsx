@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from 'styled-components';
 import MainReview from '../components/main/MainReview';
 import {useMain} from '../hooks/useMain';
@@ -6,11 +5,11 @@ import Title from '../components/common/Title';
 import MainNewBooks from '../components/main/MainNewBooks';
 import MainBest from '../components/main/MainBest';
 import Banner from '../components/common/banner/Banner';
-import {useMediaQuery} from '../hooks/useMediaQuery';
+import useLandom from '../hooks/useLandom';
 
 const Home = () => {
-  const {reviews, newBooks, bestBooks, banners} = useMain();
-  const {isMobile} = useMediaQuery();
+  const {reviews, newBooks, bestBooks} = useMain();
+  const {banners} = useLandom();
 
   return (
     <HomeStyle>
