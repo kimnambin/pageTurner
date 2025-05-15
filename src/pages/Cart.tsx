@@ -32,7 +32,7 @@ const Cart = () => {
 
   const totalQuantity = useMemo(() => {
     return carts.reduce((acc, cart) => {
-      if (checkedItems.includes(cart.id)) {
+      if (checkedItems.includes(cart.cart_id)) {
         return acc + cart.quantity;
       }
 
@@ -42,7 +42,7 @@ const Cart = () => {
 
   const totalPrice = useMemo(() => {
     return carts.reduce((acc, cart) => {
-      if (checkedItems.includes(cart.id)) {
+      if (checkedItems.includes(cart.cart_id)) {
         return acc + cart.price * cart.quantity;
       }
 
@@ -78,7 +78,7 @@ const Cart = () => {
             <div className="content">
               {carts.map(item => (
                 <CartItem
-                  key={item.id}
+                  key={item.cart_id}
                   cart={item}
                   checkedItems={checkedItems}
                   onCheck={handleCheckItem}

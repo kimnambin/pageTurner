@@ -50,7 +50,7 @@ const getCart = (req, res) => {
     });
   } else {
     let sql = `
-      SELECT cartItems.id, cart_book_id, title, summary, quantity, price 
+      SELECT cartItems.cart_id, cart_book_id, title, detail, quantity, price 
       FROM cartItems LEFT JOIN books 
       ON cartItems.cart_book_id = books.id
       WHERE cart_user_id = ? 
@@ -60,9 +60,12 @@ const getCart = (req, res) => {
 
     if (seleted) {
       // 선택한 장바구니 목록 조회
-      sql += `AND  cartItems.id IN(?)`;
+      sql += `AND  cartItems.cart_id IN(?)`;
       values.push(seleted);
     }
+
+    console.log('SQL Query:', sql);
+    console.log('Values:', values);
 
     conn.query(
       sql,
@@ -95,7 +98,7 @@ const removeCartItem = (req, res) => {
     const cart_id = req.params.id;
 
     let sql = `
-  DELETE FROM cartItems WHERE id = ?`;
+  DELETE FROM cartItems WHERE cart_id = ?`;
 
     conn.query(
       sql,

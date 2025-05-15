@@ -1,8 +1,8 @@
 export interface Cart {
-  id: number;
+  cart_id: number;
   cart_book_id: number;
   title: string;
-  summary: string;
+  detail: string;
   quantity: number;
   price: number;
 }

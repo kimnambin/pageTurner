@@ -5,7 +5,6 @@ import BooksList from '../components/Books/BooksList';
 import BookEmpty from '../components/Books/BookEmpty';
 import BookViewSwitcher from '../components/Books/BookViewSwitcher';
 import Loading from '../components/common/Loading';
-import React, {useEffect, useRef} from 'react';
 import {useBooksInfinite} from '../hooks/useBooksInfinite';
 import {useIntersectionObserver} from '../hooks/useIntersectionObserver';
 
@@ -33,6 +32,8 @@ const Books = () => {
   if (isEmpty) {
     return <BookEmpty />;
   }
+
+  console.log('dsada', books);
 
   if (!books || !pagination || isBooksLoading) {
     return <Loading />;

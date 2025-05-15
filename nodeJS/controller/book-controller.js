@@ -11,24 +11,25 @@ const all_books = (req, res) => {
   let offset = limit * (currentPage - 1);
 
   let sql = `SELECT SQL_CALC_FOUND_ROWS *, 
-    (SELECT COUNT(*) FROM likes WHERE liked_book_id = books.id) AS likes 
+    (SELECT COUNT(*) FROM likes WHERE liked_books_id = books.id) AS likes 
     FROM books `;
 
   let values = [];
 
   if (category_id && new_book) {
-    sql += ` WHERE category_id=? AND pub_date 
+    sql += ` WHERE category_id=? AND pubDate 
     BETWEEN DATE_SUB(NOW(), INTERVAL 1 MONTH) AND NOW() `;
     values.push(Number(category_id));
   } else if (category_id) {
     sql += ` WHERE category_id=? `;
     values.push(Number(category_id));
   } else if (new_book) {
-    sql += ` WHERE pub_date 
+    sql += ` WHERE pubDate 
     BETWEEN DATE_SUB(NOW(), INTERVAL 1 MONTH) AND NOW() `;
   }
 
   sql += ` LIMIT ? OFFSET ?`;
+
   values.push(Number(limit), offset);
 
   conn.query(sql, values, (err, result) => {
@@ -41,8 +42,8 @@ const all_books = (req, res) => {
     }
 
     result.map(item => {
-      item.pubDate = item.pub_date;
-      delete item.pub_date;
+      item.pubDate = item.pubDate;
+      delete item.pubDate;
     });
 
     allBooksRes.books = result;
@@ -71,15 +72,15 @@ const book_detail = (req, res) => {
   let authorization = ensureAuthrizaion(req, res);
 
   let loginSQL = `SELECT *,
-      (SELECT COUNT(*) FROM likes WHERE liked_book_id = books.id) AS 'likes' ,
+      (SELECT COUNT(*) FROM likes WHERE liked_books_id = books.id) AS 'likes' ,
         (SELECT EXISTS
-          (SELECT * FROM likes WHERE user_id = ? AND liked_book_id = ?)) AS 'liked'
+          (SELECT * FROM likes WHERE user_id = ? AND liked_books_id = ?)) AS 'liked'
         FROM books
         LEFT JOIN category ON books.category_id = category.category_id
         WHERE books.id = ?;`;
 
   let noLoginSQL = `SELECT *,
-      (SELECT COUNT(*) FROM likes WHERE liked_book_id = books.id) AS 'likes'
+      (SELECT COUNT(*) FROM likes WHERE liked_books_id = books.id) AS 'likes'
         FROM books 
         LEFT JOIN category ON books.category_id = category.category_id
         WHERE books.id = ?;`;

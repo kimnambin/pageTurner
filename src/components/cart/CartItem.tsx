@@ -17,18 +17,18 @@ interface Props {
 
 export const CartItem = ({cart, checkedItems, onCheck, onDelete}: Props) => {
   const isChecked = useMemo(() => {
-    return checkedItems.includes(cart.id);
-  }, [checkedItems, cart.id]);
+    return checkedItems.includes(cart.cart_id);
+  }, [checkedItems, cart.cart_id]);
 
   const {showConfirm} = useAlert();
 
   const handleCheck = () => {
-    onCheck(cart.id);
+    onCheck(cart.cart_id);
   };
 
   const handleDelete = () => {
     showConfirm('정말 삭제하시겠습니까?', () => {
-      onDelete(cart.id);
+      onDelete(cart.cart_id);
     });
   };
 
@@ -47,7 +47,7 @@ export const CartItem = ({cart, checkedItems, onCheck, onDelete}: Props) => {
           <Title size="medium" color="text">
             {cart.title}
           </Title>
-          <p className="summary">{cart.summary}</p>
+          <p className="summary">{cart.detail}</p>
           <p className="price">{formatNumber(cart.price)}원</p>
           <p className="quantity">{cart.quantity}권</p>
         </div>

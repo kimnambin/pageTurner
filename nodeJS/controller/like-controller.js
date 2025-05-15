@@ -18,7 +18,7 @@ const addLike = (req, res) => {
       message: '토큰 이상 감지',
     });
   } else {
-    let sql = `INSERT INTO likes (user_id, liked_book_id) VALUES (?, ?);`;
+    let sql = `INSERT INTO likes (user_id, liked_books_id) VALUES (?, ?);`;
     let values = [authorization.id, book_id];
     conn.query(
       sql,
@@ -49,7 +49,7 @@ const removeLike = (req, res) => {
       message: '토큰 이상 감지',
     });
   } else {
-    let sql = `DELETE FROM likes WHERE user_id = ? AND liked_book_id = ? ;`;
+    let sql = `DELETE FROM likes WHERE user_id = ? AND liked_books_id = ? ;`;
     let values = [authorization.id, book_id];
     conn.query(
       sql,
